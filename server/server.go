@@ -13,16 +13,7 @@ func sendResponse(conn *net.UDPConn, addr *net.UDPAddr, resp string) {
 	}
 }
 
-func CreateServer() {
-	addr := net.UDPAddr{
-		Port: 1234,
-		IP:   net.ParseIP("localhost"),
-	}
-	ser, err := net.ListenUDP("udp", &addr)
-	if err != nil {
-		fmt.Printf("Some error %v\n", err)
-		return
-	}
+func CreateServer(ser *net.UDPConn) {
 
 	for {
 		p := make([]byte, 2048)
